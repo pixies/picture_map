@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+
+<div class="col l12 m12 s12">
+
+    <div id="map">
+      
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+          <a class="btn-floating btn-large red">
+            <i class="large material-icons"><i class="fa fa-location-arrow"></i></i>
+          </a>
+          <ul>
+            <li><a class="btn-floating red" href="/admin/picture/picture/add/"><i class="material-icons"><i class="fa fa-camera-retro fa-lg"></i></a></li>
+          </ul>
+      </div>
+
+    </div>
+  
+</div>
+
+
+</div>
+
+
+ <!-- Maps -->
+       <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <script>
+
+    var map = L.map('map').setView([-7.9724,-38.2686], 14);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2xleXRvbmZhYmlvIiwiYSI6IldnM0JoQWMifQ.aDZpRB7JVoWe6JibITL9ww', {
+      maxZoom: 18, attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors', id: 'cleytonfabio.o2mi7jab'}).addTo(map);
+
+    var LeafIcon = L.Icon.extend({
+      options: {
+        //shadowUrl: '../docs/images/leaf-shadow.png',
+        iconSize:     [38, 95],
+        //shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        //shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+      }
+    });
+
+  //var greenIcon = new LeafIcon({iconUrl: 'http://leafletjs.com/docs/images/leaf-green.png'});
+
+
+  {% if pictures %}
+      {% for picture in pictures %}
+        var icone = new LeafIcon({iconUrl: '{{ picture.arquivo.url }}'});
+
+        L.marker([{{picture.latitude}},{{picture.longitude}}], {icon: icone}).bindPopup('{{picture.descricao}}').addTo(map);
+      {% endfor %}
+  {% endif %}
+
+
+
+
+  </script>
+<!-- Fim Maps -->
+{% endblock %}

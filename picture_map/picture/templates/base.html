@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<html>
+    <head>
+
+      <title>Ideias perigosas!</title>
+      
+      <script src="{{STATIC_URL}}/css/style.css"></script>
+      
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <!-- <link rel="stylesheet" href="{% static 'css/cflb.css' %}"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+       
+
+      <style type="text/css">
+        
+        div#map {
+            width: 102%;
+            height: 100%;
+            margin: -5.5rem 100rem -8rem -1rem;
+        }
+
+        .leaflet-top {
+    top: 70px;
+}
+.leaflet-left {
+    left: 80%;
+}
+
+      </style>
+
+
+      
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<body>
+    
+
+  
+        <div class="row"> <!-- Linha barra de navegacao -->
+               <div class="navbar-fixed" >
+                  <nav class="noshadow">
+                    <div class="nav-wrapper black">
+                      <a href="#!" class="brand-logo left" style="font-family: Montserrat; left: 4rem;">take a picture</a>
+                      <a href="#" data-activates="mobile-demo" class="button-collapse left" style="left: 1rem;"><i class="material-icons">menu</i></a>
+                      <ul class="right hide-on-med-and-down">
+                             
+                                  <li><a href="trajetoria/"><i class="material-icons">room</i></a></li>
+                                  <li><a href="pesquisas/"><i class="material-icons">more_vert</i></a></li>
+                      </ul>
+
+                      <ul class="side-nav left" id="mobile-demo">
+                      
+                        <li><a href="trajetoria">Por onde andei</a></li>
+                        <li><a href="pesquisa/">Mobile</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+   
+        </div> <!-- FIM - Linha barra de navegacao -->
+       
+
+
+
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+
+            </div>
+     
+      
+
+
+
+   
+        
+
+
+
+       <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+
+        <script type="text/javascript" charset="utf-8" async defer>
+             $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+
+
+    $(".button-collapse").sideNav();
+    $('.fixed-action-btn');
+        
+        </script>
+
+</body>
